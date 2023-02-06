@@ -1,0 +1,74 @@
+.modalmenu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    gap: 10px;
+    width: 100%;
+    height: 50px;
+    background-color: black;
+}
+
+.modalmenu button {
+    height: 30px;
+    border-radius: 20px;
+}
+
+.modalmenu p{
+    color: white;
+}
+
+.modallink a{
+    color:#1D6154;
+    text-decoration: none;
+}
+
+figure .modallink{
+    margin-top: 10px;
+    margin-inline-start: 60px;
+}
+
+.modalprojet{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+
+.modalprojet .modallink{
+    margin-top: 1em;
+}
+
+.modal{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-wrapper{
+    width: 600px;
+    max-width: calc(100vw-20px);
+    max-height: calc(100vh-20px);
+    padding: 20px;
+    background-color: white;
+}
+
+.modal form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-wrapper button{
+    border: 1px black solid;
+    background-color: white;
+    
+}
