@@ -16,32 +16,32 @@
     border-radius: 20px;
 }
 
-.modalmenu p{
+.modalmenu p {
     color: white;
 }
 
-.modallink a{
-    color:#1D6154;
+.modallink a {
+    color: #1D6154;
     text-decoration: none;
 }
 
-figure .modallink{
+figure .modallink {
     margin-top: 10px;
     margin-inline-start: 60px;
 }
 
-.modalprojet{
+.modalprojet {
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 10px;
 }
 
-.modalprojet .modallink{
+.modalprojet .modallink {
     margin-top: 1em;
 }
 
-.modal{
+.modal-1 {
     position: fixed;
     display: flex;
     justify-content: center;
@@ -53,22 +53,152 @@ figure .modallink{
     background: rgba(0, 0, 0, 0.8);
 }
 
-.modal-wrapper{
+.modal-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 600px;
     max-width: calc(100vw-20px);
     max-height: calc(100vh-20px);
-    padding: 20px;
+    padding: 40px;
     background-color: white;
+    grid-row-gap: 20px;
+    border-radius: 20px;
+
 }
 
-.modal form{
+.btnmodal {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    width: 100%;
+}
+
+.btnclose {
+    border: none;
+    background: none;
+}
+
+.btnBack {
+    border: none;
+    background: none;
+}
+
+.btnajouterimg {
+    font-family: 'Syne';
+    font-weight: 700;
+    color: white;
+    background-color: #1D6154;
+    border: none;
+    margin: 2em auto;
+    width: 180px;
+    height: 50px;
+    text-align: center;
+    border-radius: 60px;
+}
+
+.btndeleteAll {
+    color: red;
+    border: none;
+    background: none;
+}
+
+.modal-gallery-del {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-row-gap: 10px;
+}
+
+.modal-gallery-del figure {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+}
+
+.btnDelete {
+    align-self: end;
+    position: absolute;
+    z-index: 4;
+    border: none;
+    color: white;
+    background-color: black;
+}
+
+.modal-gallery-del img {
+    width: 100%;
+}
+
+.modal-gallery-del figcaption {
+    width: 50%;
+}
+
+.modal-add {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.modal-wrapper button{
-    border: 1px black solid;
-    background-color: white;
-    
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-bottom: solid 2px grey;
+}
+
+.modal-add input {
+    box-shadow: 0px 4px 8px;
+    width: 400px;
+    height: 30px;
+}
+
+.sectionadd {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: #E8F1F6;
+    height: 200px;
+    width: 420px;
+
+}
+
+.sectionadd i {
+    scale: 3;
+    color: #B9C5CC;
+}
+
+.sectionadd button {
+    background-color: #B9C5CC;
+    border-radius: 50px;
+    border: none;
+    margin: 2em;
+    width: 180px;
+    height: 40px;
+    text-align: center;
+    font-family: 'Syne';
+    font-weight: 700;
+}
+
+.label-file {
+    cursor: pointer;
+    color: red;
+
+}
+
+.input-file {
+    display: none;
+    background-color: blue;
+}
+
+.btnvalider{
+    background-color: #B9C5CC;
+    border-radius: 50px;
+    border: none;
+    margin: 2em;
+    width: 180px;
+    height: 40px;
+    text-align: center;
+    font-family: 'Syne';
+    font-weight: 700;
 }

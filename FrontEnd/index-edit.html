@@ -14,7 +14,6 @@
 	<link rel="stylesheet" href="./assets/style.css">
 	<link rel="stylesheet" href="./assets/modal.css">
 	<script type="module" src="work.js"></script>
-	<script type="module" src="app.js"></script>
 	<script src="https://kit.fontawesome.com/7a35c26650.js" crossorigin="anonymous"></script>
 </head>
 
@@ -66,8 +65,20 @@
 		<section id="portfolio">
 			<div class="modalprojet">
 				<h2>Mes Projets</h2>
-				<div class="modallink" ><a href="#modal-projet"><i class="fa-regular fa-pen-to-square"></i>modifier</a></div>
+				<div class="modallink modal-js"><a href="#modal-gallery"><i
+							class="fa-regular fa-pen-to-square"></i>modifier</a>
+				</div>
 			</div>
+			<aside id="modal-gallery" class="modal-1 js-modal-stop" aria-hidden="true" role="diablog" aria-modal="false"
+				aria-label="edit-galery" style="display: none;">
+				<div class="modal-wrapper js-modal-stop">
+					<div class="btnmodal"></div>
+					<div class="modal-gallery-del" aria-hidden="false" role="dialog"></div>
+				</div>
+
+			</aside>
+			
+
 
 			<div id="filter"></div>
 			<div class="gallery"></div>

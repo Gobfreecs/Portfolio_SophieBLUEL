@@ -21,13 +21,15 @@ btnConnect.addEventListener('click', e => {
     })
     .then(response => {
         if (!response.ok) {
+            window.alert("Mauvais identifiants");
             throw new Error('Identifiants incorrects');
+            
         }
         return response.json();
     })
     .then(data => {
         // Stocker le jeton d'accès dans le navigateur
-        localStorage.setItem('access_token', data.access_token);
+        localStorage.setItem('token', data.token);
         // Rediriger vers la page protégée
         window.location.href = "/FrontEnd/index-edit.html";
     })

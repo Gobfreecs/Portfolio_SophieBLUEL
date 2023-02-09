@@ -305,7 +305,7 @@ footer nav ul {
 	border-radius: 20px;
 }
 
-#filter button:hover {
+#filter button:active {
 	color: white;
 	background-color: #1D6154;
 }
