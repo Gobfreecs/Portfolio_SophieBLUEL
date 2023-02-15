@@ -11,28 +11,55 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+	<link rel="stylesheet" href="./assets/modal.css">
+	<link rel="stylesheet" href="./assets/login.css">
+
 	<script type="module" src="work.js"></script>
-	
+	<script src="https://kit.fontawesome.com/7a35c26650.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+	<div class="modalmenu displayModaltop" style="display: none;">
+		<p>
+			<i class="fa-regular fa-pen-to-square"></i>Mode édition
+		</p>
+		<button>Publier les changements</button>
+	</div>
 	<header>
 		<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 		<nav>
 			<ul>
-				<a href="#portfolio"><li>projets</li></a>
-				<a href="#contact"><li>contact</li></a>
-				<a href="login.html"><li>login</li></a>
+				<a href="#portfolio" class="btnProjets"><li>projets</li></a>
+				<a href="#contact" class="btncontact"><li>contact</li></a>
+				<a href="#login" class="displayoffEdit btnlogin" style="display: flex;"><li>login</li></a>
+				<a href="" class="displayBtnlogout  btnlogout" style="display: none;"><li>logout</li></a>
 				<a href=""><li><img src="./assets/icons/instagram.png" alt="Instagram"></li></a>
 			</ul>
 		</nav>
 	</header>
 	<main>
-		<section id="introduction">
+		<section id="login" class="displayLogin" style="display: none;">
+			<h2>Login</h2>
+			<form id="formConnect" name="Form">
+				<div>
+					<p> E-mail</p>
+					<input type="email">
+				</div>
+				<div>
+					<p>Mot de passe</p>
+					<input type="password">
+				</div>
+				<button class="btnconnect">Se connecter</button>
+				<a href="">Mot de passe oublié</a>
+			</form>
+		</section>
+		<section id="introduction" class="hideIntro">
 			<figure>
 				<img src="./assets/images/sophie-bluel.png" alt="">
+				<div class="modallink displayModalintro1" style="display: none;"><a><i class="fa-regular fa-pen-to-square"></i>modifier</a></div>
 			</figure>
 			<article>
+				<div class="modallink displayModalintro2" style="display: none;"><a><i class="fa-regular fa-pen-to-square"></i>modifier</a></div>
 				<h2>Designer d'espace</h2>
 				<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison
 					finale du chantier.</p>
@@ -43,12 +70,47 @@
 					décorateur(trice)</p>
 			</article>
 		</section>
-		<section id="portfolio">
-			<h2>Mes Projets</h2>
+		<section id="portfolio" class="hidePortofolio" >
+			<div class="modalprojet">
+				<h2>Mes Projets</h2>
+				<div class="modallink modal-js displayModalprojets" style="display: none;"><a href="#modal-gallery"><i
+							class="fa-regular fa-pen-to-square"></i>modifier</a>
+				</div>
+			</div>
 			<div id="filter"></div>
 			<div class="gallery"></div>
+			<aside id="modal-gallery" class="modal js-modal-stop" aria-hidden="true" role="diablog" aria-modal="false"
+			aria-label="edit-galery" style="display: none;">
+			<div class="js-modal-stop">
+				<div class="modal-wrapper">
+					<div class="btnmodal"></div>
+					<div class="modal-gallery-del"></div>
+				</div>
+
+				<div class="modal-add" style="display: none;">
+					<div class="btnposition"></div>
+					<form class="formModal">
+						<div class="sectionadd">
+							<img id="preview-image" style="display:none;" />
+							<div class="hidde-input">
+								<label for="file"><i class="fa-regular fa-image fa-2xl"></i></label>
+								<label class="custom-file-upload">
+									+ Ajouter une photo
+									<input type="file" id="input-file" required/>
+								</label>
+								jpg, png: 4mo max
+							</div>
+						</div>
+						<label for="Titre">Titre</label>
+						<input id="title" type="text" title="Titre" required>
+						<label for="editing-scroll">Catégories</label>
+						<div class="editing-scroll"></div>
+					</form>
+				</div>
+			</div>
+		</aside>
 		</section>
-		<section id="contact">
+		<section id="contact" class="hideContact">
 			<h2>Contact</h2>
 			<p>Vous avez un projet ? Discutons-en !</p>
 			<form action="#" method="post">

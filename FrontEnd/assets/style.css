@@ -134,6 +134,10 @@ table {
 	border-spacing: 0;
 }
 
+a{
+	text-decoration: none;
+}
+
 /** end reset css**/
 body {
 	max-width: 1140px;
@@ -305,11 +309,6 @@ footer nav ul {
 	border-radius: 20px;
 }
 
-#filter button:active {
-	color: white;
-	background-color: #1D6154;
-}
-
 a {
 	text-decoration: none;
 
@@ -318,4 +317,3 @@ a {
 a:visited {
 	text-decoration: none;
 }
-

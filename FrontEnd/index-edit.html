@@ -18,7 +18,7 @@
 </head>
 
 <body>
-	<div class="modalmenu">
+	<div class="modalmenu displayEdit">
 		<p>
 			<i class="fa-regular fa-pen-to-square"></i>Mode édition
 		</p>
@@ -34,7 +34,7 @@
 				<a href="#contact">
 					<li>contact</li>
 				</a>
-				<a href="login.html">
+				<a href="#login">
 					<li>logout</li>
 				</a>
 				<a href="">
@@ -47,10 +47,10 @@
 		<section id="introduction">
 			<figure>
 				<img src="./assets/images/sophie-bluel.png" alt="">
-				<div class="modallink"><i class="fa-regular fa-pen-to-square"></i>modifier</a></div>
+				<div class="modallink displayEdit"><i class="fa-regular fa-pen-to-square"></i>modifier</a></div>
 			</figure>
 			<article>
-				<div class="modallink"><i class="fa-regular fa-pen-to-square"></i>modifier</a></div>
+				<div class="modallink displayEdit"><i class="fa-regular fa-pen-to-square"></i>modifier</a></div>
 				</div>
 				<h2>Designer d'espace</h2>
 				<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison
@@ -65,21 +65,40 @@
 		<section id="portfolio">
 			<div class="modalprojet">
 				<h2>Mes Projets</h2>
-				<div class="modallink modal-js"><a href="#modal-gallery"><i
+				<div class="modallink modal-js displayEdit"><a href="#modal-gallery"><i
 							class="fa-regular fa-pen-to-square"></i>modifier</a>
 				</div>
 			</div>
-			<aside id="modal-gallery" class="modal-1 js-modal-stop" aria-hidden="true" role="diablog" aria-modal="false"
+			<aside id="modal-gallery" class="modal " aria-hidden="true" role="diablog" aria-modal="false"
 				aria-label="edit-galery" style="display: none;">
-				<div class="modal-wrapper js-modal-stop">
-					<div class="btnmodal"></div>
-					<div class="modal-gallery-del" aria-hidden="false" role="dialog"></div>
+				<div class="js-modal-stop">
+					<div class="modal-wrapper">
+						<div class="btnmodal"></div>
+						<div class="modal-gallery-del"></div>
+					</div>
+
+					<div class="modal-add" style="display: none;">
+						<div class="btnposition"></div>
+						<form class="formModal">
+							<div class="sectionadd">
+								<img id="preview-image" style="display:none;" />
+								<div class="hidde-input">
+									<label for="file"><i class="fa-regular fa-image fa-2xl"></i></label>
+									<label class="custom-file-upload">
+										+ Ajouter une photo
+										<input type="file" id="input-file" required />
+									</label>
+									jpg, png: 4mo max
+								</div>
+							</div>
+							<label for="Titre">Titre</label>
+							<input id="title" type="text" title="Titre">
+							<label for="editing-scroll">Catégories</label>
+							<div class="editing-scroll"></div>
+						</form>
+					</div>
 				</div>
-
 			</aside>
-			
-
-
 			<div id="filter"></div>
 			<div class="gallery"></div>
 		</section>
