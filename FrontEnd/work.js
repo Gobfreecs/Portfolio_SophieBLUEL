@@ -1,7 +1,5 @@
 let btnidActif = -1;
 
-
-
 const btnLogin = document.querySelector(".btnlogin");
 const btnProjets = document.querySelector(".btnProjets");
 const btncontact = document.querySelector(".btncontact");
@@ -9,6 +7,15 @@ const displayLogin = document.querySelector(".displayLogin");
 const hideIntro = document.querySelector(".hideIntro");
 const hidePortofolio = document.querySelector(".hidePortofolio");
 const hideContact = document.querySelector(".hideContact");
+const email = document.querySelector('input[type="email"]');
+const password = document.querySelector('input[type="password"]');
+const btnConnect = document.querySelector('.btnconnect');
+const displayBtnlogout = document.querySelector('.displayBtnlogout');
+const displayModaltop = document.querySelector('.displayModaltop');
+const displayModalintro1 = document.querySelector('.displayModalintro1');
+const displayModalprojets = document.querySelector('.displayModalprojets');
+const displayModalintro2 = document.querySelector('.displayModalintro2');
+const displaybtnlogin = document.querySelector('.displayoffEdit');
 
 btnLogin.addEventListener('click', e => {
     e.preventDefault();
@@ -38,15 +45,7 @@ btncontact.addEventListener('click', e => {
 
 
 // Récupération des champs de formulaire
-const email = document.querySelector('input[type="email"]');
-const password = document.querySelector('input[type="password"]');
-const btnConnect = document.querySelector('.btnconnect');
-const displayBtnlogout = document.querySelector('.displayBtnlogout');
-const displayModaltop = document.querySelector('.displayModaltop');
-const displayModalintro1 = document.querySelector('.displayModalintro1');
-const displayModalprojets = document.querySelector('.displayModalprojets');
-const displayModalintro2 = document.querySelector('.displayModalintro2');
-const displaybtnlogin = document.querySelector('.displayoffEdit');
+
 
 // Écouteur d'événement pour le bouton de connexion
 btnConnect.addEventListener('click', e => {
@@ -362,8 +361,8 @@ const sectionAdd = document.querySelector(".sectionadd");
 const categoriesAdd = document.querySelector(".editing-scroll");
 
 const inputcatAdd = document.createElement("select");
-categoriesAdd.setAttribute('id', 'category')
-categoriesAdd.setAttribute('required', true)
+inputcatAdd.setAttribute('id', 'category')
+inputcatAdd.setAttribute('required', true)
 
 const btnBack = document.createElement("button");
 btnBack.innerHTML = '<i class="fa-solid fa-left-long"></i>';
@@ -412,7 +411,7 @@ for (let i = 0; i < filter.length; i++) {
     const articleFilter = filter[i];
     const inputOption = document.createElement("option");
     inputOption.innerHTML = articleFilter.name;
-    inputOption.id = articleFilter.id;
+    inputOption.value = articleFilter.id;
     inputcatAdd.appendChild(inputOption);
 }
 
@@ -435,6 +434,7 @@ form.addEventListener('submit', async function (event) {
     formData.append('title', title);
     formData.append('imageUrl', imageUrl);
     formData.append('categoryId', categoryId);
+    formData.append('userId', 1);
 
     console.log(Array.from(formData))
 
@@ -442,7 +442,9 @@ form.addEventListener('submit', async function (event) {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'accept': 'application/json',
         'Content-Type': 'multipart/form-data'
+        
       },
       body: formData
     })
