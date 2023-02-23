@@ -1,88 +1,21 @@
 let btnidActif = -1;
 
-const btnLogin = document.querySelector(".btnlogin");
-const btnProjets = document.querySelector(".btnProjets");
-const btncontact = document.querySelector(".btncontact");
-const displayLogin = document.querySelector(".displayLogin");
-const hideIntro = document.querySelector(".hideIntro");
+
 const hidePortofolio = document.querySelector(".hidePortofolio");
 const hideContact = document.querySelector(".hideContact");
-const email = document.querySelector('input[type="email"]');
-const password = document.querySelector('input[type="password"]');
-const btnConnect = document.querySelector('.btnconnect');
 const displayBtnlogout = document.querySelector('.displayBtnlogout');
 const displayModaltop = document.querySelector('.displayModaltop');
 const displayModalintro1 = document.querySelector('.displayModalintro1');
 const displayModalprojets = document.querySelector('.displayModalprojets');
 const displayModalintro2 = document.querySelector('.displayModalintro2');
 const displaybtnlogin = document.querySelector('.displayoffEdit');
-
-btnLogin.addEventListener('click', e => {
-    e.preventDefault();
-    displayLogin.style.display = "block";
-    hideIntro.style.display = "none";
-    hidePortofolio.style.display = "none";
-    hideContact.style.display = "none";
-});
-
-btnProjets.addEventListener('click', e => {
-    e.preventDefault();
-    displayLogin.style.display = "none";
-    hideIntro.style.display = "";
-    hidePortofolio.style.display = "";
-    hideContact.style.display = "";
-    window.location.href = "/FrontEnd/index.html#portfolio";
-});
-
-btncontact.addEventListener('click', e => {
-    e.preventDefault();
-    displayLogin.style.display = "none";
-    hideIntro.style.display = "";
-    hidePortofolio.style.display = "";
-    hideContact.style.display = "";
-    window.location.href = "/FrontEnd/index.html#contact";
-});
-
-
-// Récupération des champs de formulaire
-
-
-// Écouteur d'événement pour le bouton de connexion
-btnConnect.addEventListener('click', e => {
-    e.preventDefault();
-    // Préparer les données à envoyer à l'API
-    const data = {
-        email: email.value,
-        password: password.value
-    };
-    // Envoyer les données à l'API en utilisant la méthode fetch()
-    fetch('http://localhost:5678/api/users/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-        .then(response => {
-            if (!response.ok) {
-                window.alert("Mauvais identifiants");
-                throw new Error('Identifiants incorrects');
-
-            }
-            return response.json();
-        })
-        .then(data => {
-            // Stocker le jeton d'accès dans le navigateur
-            localStorage.setItem('token', data.token);
-            // Rediriger vers la page protégée
-            displayLoggin()
-        })
-        .catch(error => {
-            console.error(error);
-        });
-});
-
 const btnlogout = document.querySelector(".btnlogout");
+
+if (isConnected()){
+
+    displayUpdatebtn();
+
+}
 
 btnlogout.addEventListener('click', e => {
     e.preventDefault();
@@ -91,23 +24,30 @@ btnlogout.addEventListener('click', e => {
 
 function logout() {
     localStorage.removeItem("token");
-    displayLogin.style.display = "none";
     displayBtnlogout.style.display = "none";
     displayModaltop.style.display = "none";
     displayModalintro1.style.display = "none";
     displayModalintro2.style.display = "none";
     displayModalprojets.style.display = "none";
     displaybtnlogin.style.display = "flex";
-
 }
 
 
-function displayLoggin(dl){
 
-    displayLogin.style.display = "none";
-    hideIntro.style.display = "";
-    hidePortofolio.style.display = "";
-    hideContact.style.display = "";
+function isConnected(){
+    const token = localStorage.getItem('token');
+
+    if (token == null){
+        console.log("notConnected");
+        return false;
+    }else{
+        console.log("connected")
+        return true;
+    }
+    
+}
+
+function displayUpdatebtn(){
     displayBtnlogout.style.display = "block";
     displayModaltop.style.display = "flex";
     displayModalintro1.style.display = "flex";
@@ -305,8 +245,15 @@ function editgalleryContent(editprojects) {
         btnDelete.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
         btnDelete.setAttribute("class", "btnDelete");
         btnDelete.id = article.id;
-        btnDeleteFonction(btnDelete);
-
+        btnDelete.addEventListener('click', event => {
+            event.preventDefault();
+            fetch('http://localhost:5678/api/works/' + btnDelete.id, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                }
+            })  
+        })
 
         galleryEdit.appendChild(worksElement);
         worksElement.appendChild(imageElement);
@@ -317,17 +264,7 @@ function editgalleryContent(editprojects) {
 editgalleryContent(works)
 
 function btnDeleteFonction(btnDelete) {
-    btnDelete.addEventListener('click', event => {
-        event.preventDefault();
-        fetch('http://localhost:5678/api/works/' + btnDelete.id, {
-            method: 'DELETE',
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            }
-        })
-        
-    })
-    displayLoggin()
+    
   }
 
 const btnajouterimg = document.createElement("button");
@@ -432,8 +369,8 @@ form.addEventListener('submit', async function (event) {
 
     const formData = new FormData();
     formData.append('title', title);
-    formData.append('imageUrl', imageUrl);
-    formData.append('categoryId', categoryId);
+    formData.append('image', imageUrl);
+    formData.append('category', categoryId);
     formData.append('userId', 1);
 
     console.log(Array.from(formData))
@@ -443,8 +380,6 @@ form.addEventListener('submit', async function (event) {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
         'accept': 'application/json',
-        'Content-Type': 'multipart/form-data'
-        
       },
       body: formData
     })
@@ -461,11 +396,6 @@ form.addEventListener('submit', async function (event) {
   }
 });
 
-
-
-
-
-
 //Prévisualisation
 const hiddeInput = document.querySelector(".hidde-input")
 
@@ -480,9 +410,3 @@ inputFile.addEventListener("change", function () {
     };
     reader.readAsDataURL(inputFile.files[0]);
 });
-
-
-
-
-
-

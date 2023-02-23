@@ -18,41 +18,26 @@
 </head>
 
 <body>
-	<div class="modalmenu displayModaltop" style="display: none;">
-		<p>
-			<i class="fa-regular fa-pen-to-square"></i>Mode édition
-		</p>
-		<button>Publier les changements</button>
-	</div>
 	<header>
+		<div class="modalmenu displayModaltop" style="display: none;">
+			<p>
+				<i class="fa-regular fa-pen-to-square"></i>Mode édition
+			</p>
+			<button>Publier les changements</button>
+		</div>
 		<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 		<nav>
 			<ul>
 				<a href="#portfolio" class="btnProjets"><li>projets</li></a>
 				<a href="#contact" class="btncontact"><li>contact</li></a>
-				<a href="#login" class="displayoffEdit btnlogin" style="display: flex;"><li>login</li></a>
+				<a href="login.html" class="displayoffEdit btnlogin" style="display: flex;"><li>login</li></a>
 				<a href="" class="displayBtnlogout  btnlogout" style="display: none;"><li>logout</li></a>
 				<a href=""><li><img src="./assets/icons/instagram.png" alt="Instagram"></li></a>
 			</ul>
 		</nav>
 	</header>
 	<main>
-		<section id="login" class="displayLogin" style="display: none;">
-			<h2>Login</h2>
-			<form id="formConnect" name="Form">
-				<div>
-					<p> E-mail</p>
-					<input type="email">
-				</div>
-				<div>
-					<p>Mot de passe</p>
-					<input type="password">
-				</div>
-				<button class="btnconnect">Se connecter</button>
-				<a href="">Mot de passe oublié</a>
-			</form>
-		</section>
-		<section id="introduction" class="hideIntro">
+		<section id="introduction" >
 			<figure>
 				<img src="./assets/images/sophie-bluel.png" alt="">
 				<div class="modallink displayModalintro1" style="display: none;"><a><i class="fa-regular fa-pen-to-square"></i>modifier</a></div>
@@ -69,7 +54,7 @@
 					décorateur(trice)</p>
 			</article>
 		</section>
-		<section id="portfolio" class="hidePortofolio" >
+		<section id="portfolio">
 			<div class="modalprojet">
 				<h2>Mes Projets</h2>
 				<div class="modallink modal-js displayModalprojets" style="display: none;"><a href="#modal-gallery"><i
@@ -109,7 +94,7 @@
 			</div>
 		</aside>
 		</section>
-		<section id="contact" class="hideContact">
+		<section id="contact">
 			<h2>Contact</h2>
 			<p>Vous avez un projet ? Discutons-en !</p>
 			<form action="#" method="post">
