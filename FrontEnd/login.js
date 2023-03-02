@@ -1,7 +1,6 @@
 const btnConnect = document.querySelector('.btnconnect');
 const email = document.querySelector('input[type="email"]');
 const password = document.querySelector('input[type="password"]');
-
 const hideIntro = document.querySelector(".hideIntro");
 const displayBtnlogout = document.querySelector('.displayBtnlogout');
 const displayModaltop = document.querySelector('.displayModaltop');
