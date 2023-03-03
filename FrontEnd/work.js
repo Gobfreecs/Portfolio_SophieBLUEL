@@ -31,6 +31,9 @@ if (isConnected()) {
 
 }
 
+
+//fonction logout affichage et disparition des éléments
+
 btnlogout.addEventListener('click', e => {
     e.preventDefault();
     logout();
@@ -94,6 +97,8 @@ function galleryContent(projects) {
     };
 }
 
+//Appel API pour la création et mise a jour des galeries
+
 function updateGallery() {
     fetch('http://localhost:5678/api/works')
         .then(response => response.json())
@@ -127,7 +132,7 @@ fetch('http://localhost:5678/api/categories')
             sectionGallery.innerText = "";
             galleryContent(works);
         };
-
+//création des filtres par l'API
         for (let i = 0; i < filter.length; i++) {
             const articleFilter = filter[i];
 
@@ -151,6 +156,8 @@ fetch('http://localhost:5678/api/categories')
     })
     .catch(error => console.error(error));
 
+//Changement couleur filtres
+
 let idActif = -1;
 
 function colorfilter(btn, id) {
@@ -170,6 +177,7 @@ const focusSelector = 'button, submit, img, input'
 let focusables = []
 let previousFocusElem = null
 
+//ouverture de la modal
 
 const openModal = function (e) {
     e.preventDefault()
@@ -177,7 +185,7 @@ const openModal = function (e) {
     focusables = Array.from(modal.querySelectorAll(focusSelector))
     previousFocusElem = document.querySelector(':focus')
     focusables[0].focus()
-    modal.style.display = null
+    modal.style.display = 'flex'
     modal.removeAttribute('aria-hidden')
     modal.setAttribute('aria-modal', "true")
     modal.addEventListener('click', closeModal)
@@ -186,6 +194,8 @@ const openModal = function (e) {
     modal.querySelector(".js-modal-stop").addEventListener('click', stopPropagation)
 
 }
+
+//fermeture de la modal
 
 const closeModal = function (e) {
     if (modal === null) return
@@ -235,7 +245,7 @@ window.addEventListener('keydown', function (e) {
         focusInModal(e)
 })
 
-//Modal Gallerie
+// Gallerie de la modal avec bouton pour supprimer un projet
 
 
 btnclose.innerHTML = '<i class="fas-sharp fa-solid fa-xmark"></i>';
@@ -306,7 +316,7 @@ modalgallery.appendChild(btndeleteAll);
 mgalleryEdit.appendChild(btnclose);
 
 
-//Modal d'ajout d'image
+//Panneau Modal d'ajout d'image avec formulaire
 
 const inputcatAdd = document.createElement("select");
 inputcatAdd.setAttribute('id', 'category')
@@ -369,6 +379,23 @@ fetch('http://localhost:5678/api/categories')
     });
   })
   .catch(error => console.error(error));
+  
+
+//Prévisualisation de l'image de projet
+const hiddeInput = document.querySelector(".hidde-input")
+
+const inputFile = document.getElementById("input-file");
+const previewImage = document.getElementById("preview-image");
+inputFile.addEventListener("change", function () {
+    const reader = new FileReader();
+    reader.onload = function (event) {
+        previewImage.src = event.target.result;
+        previewImage.style.display = "block";
+        hiddeInput.setAttribute("style", "display: none;")
+    };
+    reader.readAsDataURL(inputFile.files[0]);
+});
+
 
 //Formulaire ajout image
 const categoryInput = document.getElementById('category');
@@ -421,17 +448,4 @@ form.addEventListener('submit', async function (event) {
     }
 });
 
-//Prévisualisation
-const hiddeInput = document.querySelector(".hidde-input")
 
-const inputFile = document.getElementById("input-file");
-const previewImage = document.getElementById("preview-image");
-inputFile.addEventListener("change", function () {
-    const reader = new FileReader();
-    reader.onload = function (event) {
-        previewImage.src = event.target.result;
-        previewImage.style.display = "block";
-        hiddeInput.setAttribute("style", "display: none;")
-    };
-    reader.readAsDataURL(inputFile.files[0]);
-});

@@ -19,7 +19,7 @@
 
 <body>
 	<header>
-		<div class="modalmenu displayModaltop" style="display: none;">
+		<div class="modalmenu displayModaltop">
 			<p>
 				<i class="fa-regular fa-pen-to-square"></i>Mode édition
 			</p>
@@ -30,8 +30,8 @@
 			<ul>
 				<a href="#portfolio" class="btnProjets"><li>projets</li></a>
 				<a href="#contact" class="btncontact"><li>contact</li></a>
-				<a href="login.html" class="displayoffEdit btnlogin" style="display: flex;"><li>login</li></a>
-				<a href="" class="displayBtnlogout  btnlogout" style="display: none;"><li>logout</li></a>
+				<a href="login.html" class="displayoffEdit btnlogin"><li>login</li></a>
+				<a href="" class="displayBtnlogout  btnlogout" ><li>logout</li></a>
 				<a href=""><li><img src="./assets/icons/instagram.png" alt="Instagram"></li></a>
 			</ul>
 		</nav>
@@ -40,10 +40,10 @@
 		<section id="introduction" >
 			<figure>
 				<img src="./assets/images/sophie-bluel.png" alt="">
-				<div class="modallink displayModalintro1" style="display: none;"><a><i class="fa-regular fa-pen-to-square"></i>modifier</a></div>
+				<div class="modallink displayModalintro1"><a><i class="fa-regular fa-pen-to-square"></i>modifier</a></div>
 			</figure>
 			<article>
-				<div class="modallink displayModalintro2" style="display: none;"><a><i class="fa-regular fa-pen-to-square"></i>modifier</a></div>
+				<div class="modallink displayModalintro2"><a><i class="fa-regular fa-pen-to-square"></i>modifier</a></div>
 				<h2>Designer d'espace</h2>
 				<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison
 					finale du chantier.</p>
@@ -57,25 +57,25 @@
 		<section id="portfolio">
 			<div class="modalprojet">
 				<h2>Mes Projets</h2>
-				<div class="modallink modal-js displayModalprojets" style="display: none;"><a href="#modal-gallery"><i
+				<div class="modallink modal-js displayModalprojets" ><a href="#modal-gallery"><i
 							class="fa-regular fa-pen-to-square"></i>modifier</a>
 				</div>
 			</div>
 			<div id="filter"></div>
 			<div class="gallery"></div>
 			<aside id="modal-gallery" class="modal js-modal-stop" aria-hidden="true" role="diablog" aria-modal="false"
-			aria-label="edit-galery" style="display: none;">
+			aria-label="edit-galery">
 			<div class="js-modal-stop">
 				<div class="modal-wrapper">
 					<div class="btnmodal"></div>
 					<div class="modal-gallery-del"></div>
 				</div>
 
-				<div class="modal-add" style="display: none;">
+				<div class="modal-add">
 					<div class="btnposition"></div>
 					<form class="formModal">
 						<div class="sectionadd">
-							<img id="preview-image" style="display:none;" />
+							<img id="preview-image"/>
 							<div class="hidde-input">
 								<label for="file"><i class="fa-regular fa-image fa-2xl"></i></label>
 								<label class="custom-file-upload">

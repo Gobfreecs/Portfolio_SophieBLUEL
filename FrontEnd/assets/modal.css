@@ -1,6 +1,5 @@
-
 .modalmenu {
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     position: fixed;
@@ -19,6 +18,14 @@
 
 .modalmenu p {
     color: white;
+}
+
+.btnlogout{
+    display: none;
+}
+
+.modallink{
+    display: none;
 }
 
 .modallink a {
@@ -75,7 +82,7 @@ figure .modallink {
     width: 100%;
 }
 
-.btnmodal button{
+.btnmodal button {
     border: none;
     background: none;
 }
@@ -92,6 +99,10 @@ figure .modallink {
     height: 50px;
     text-align: center;
     border-radius: 60px;
+}
+
+#modal-gallery {
+    display: none;
 }
 
 .btndeleteAll {
@@ -131,7 +142,7 @@ figure .modallink {
 }
 
 .modal-add {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     width: 600px;
@@ -143,16 +154,16 @@ figure .modallink {
     border-radius: 20px;
 }
 
-.btnposition{
+.btnposition {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
 }
 
-.btnposition button{
+.btnposition button {
     border: none;
-    background:none;
+    background: none;
 }
 
 form {
@@ -185,7 +196,7 @@ form {
     color: #B9C5CC;
 }
 
-.hidde-input{
+.hidde-input {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -204,7 +215,8 @@ form {
     font-weight: 700;
     display: none;
 }
-.sectionadd .custom-file-upload{
+
+.sectionadd .custom-file-upload {
     background-color: #B9C5CC;
     border-radius: 50px;
     border: none;
@@ -216,7 +228,8 @@ form {
     font-weight: 700;
 }
 
-#preview-image{
+#preview-image {
+    display: none;
     width: 100%;
     height: 100%;
 }
@@ -224,13 +237,13 @@ form {
 
 
 
-.editing-scroll select{
+.editing-scroll select {
     box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
     width: 400px;
     height: 40px;
 
 }
 
-.msgError{
+.msgError {
     display: none;
 }
