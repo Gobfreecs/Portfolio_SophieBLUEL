@@ -331,6 +331,11 @@ btnBack.onclick = function (b) {
     b.preventDefault();
     modalgallery.setAttribute("style", "display:flex;")
     galleryAdd.setAttribute("style", 'display:none;')
+    imageUrlInput.value = null;
+    form.reset();
+    hiddeInput.setAttribute("style", "display: flex;")
+    previewImage.src = null;
+    previewImage.style.display = "none";
 };
 
 const btnclose2 = document.createElement("button");
@@ -430,10 +435,12 @@ form.addEventListener('submit', async function (event) {
                 console.log(data);
                 modalgallery.setAttribute("style", "display:flex;")
                 galleryAdd.setAttribute("style", 'display:none;')
-                updateGallery();
                 msgError.setAttribute('style','display:none;');
-                imageUrlInput.value = "";
+                hiddeInput.setAttribute("style", "display: flex;")
+                previewImage.src = null;
+                previewImage.style.display = "none";
                 form.reset();
+                updateGallery();
             })
             .catch(error => {
                 console.error(error);
