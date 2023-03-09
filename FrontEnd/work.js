@@ -24,6 +24,9 @@ const form = document.querySelector('.formModal');
 const titleInput = document.querySelector('#title');
 const imageUrlInput = document.querySelector('#input-file');
 const msgError = document.querySelector('.msgError');
+const hiddeInput = document.querySelector(".hidde-input")
+const inputFile = document.getElementById("input-file");
+const previewImage = document.getElementById("preview-image");
 
 if (isConnected()) {
 
@@ -208,7 +211,11 @@ const closeModal = function (e) {
     modal.querySelector('.btnclose').removeEventListener('click', closeModal)
     modal.querySelector('.btnclose2').removeEventListener('click', closeModal)
     modal.querySelector(".js-modal-stop").removeEventListener('click', stopPropagation)
-    modal = null
+    modalgallery.setAttribute("style", "display:flex;")
+    galleryAdd.setAttribute("style", 'display:none;')
+    msgError.setAttribute('style','display:none;');
+    hiddeInput.setAttribute("style", "display: flex;")
+
 }
 
 const stopPropagation = function (e) {
@@ -302,6 +309,7 @@ btnajouterimg.innerHTML = "Ajouter une photo";
 btnajouterimg.onclick = function (o) {
     modalgallery.setAttribute("style", "display: none;")
     galleryAdd.setAttribute("style", 'display:flex;')
+
 }
 
 const btndeleteAll = document.createElement("button")
@@ -334,7 +342,6 @@ btnBack.onclick = function (b) {
     imageUrlInput.value = null;
     form.reset();
     hiddeInput.setAttribute("style", "display: flex;")
-    previewImage.src = null;
     previewImage.style.display = "none";
 };
 
@@ -387,10 +394,7 @@ fetch('http://localhost:5678/api/categories')
   
 
 //Prévisualisation de l'image de projet
-const hiddeInput = document.querySelector(".hidde-input")
 
-const inputFile = document.getElementById("input-file");
-const previewImage = document.getElementById("preview-image");
 inputFile.addEventListener("change", function () {
     const reader = new FileReader();
     reader.onload = function (event) {
@@ -437,7 +441,6 @@ form.addEventListener('submit', async function (event) {
                 galleryAdd.setAttribute("style", 'display:none;')
                 msgError.setAttribute('style','display:none;');
                 hiddeInput.setAttribute("style", "display: flex;")
-                previewImage.src = null;
                 previewImage.style.display = "none";
                 form.reset();
                 updateGallery();
