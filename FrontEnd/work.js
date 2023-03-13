@@ -396,14 +396,21 @@ fetch('http://localhost:5678/api/categories')
 //Prévisualisation de l'image de projet
 
 inputFile.addEventListener("change", function () {
-    const reader = new FileReader();
-    reader.onload = function (event) {
+    const file = inputFile.files[0];
+    if (file instanceof Blob) {
+      const reader = new FileReader();
+      reader.onload = function (event) {
         previewImage.src = event.target.result;
         previewImage.style.display = "block";
         hiddeInput.setAttribute("style", "display: none;")
-    };
-    reader.readAsDataURL(inputFile.files[0]);
-});
+      };
+      reader.readAsDataURL(file);
+    } else {
+      console.log('Invalid file type');
+    }
+  });
+
+
 
 
 //Formulaire ajout image
